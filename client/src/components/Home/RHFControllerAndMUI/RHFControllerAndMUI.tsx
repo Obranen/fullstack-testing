@@ -1,6 +1,7 @@
 import TextField from '@mui/material/TextField'
 import Button from '@mui/material/Button'
 import {useForm, SubmitHandler, Controller, useFormState} from 'react-hook-form'
+import Typography from '@mui/material/Typography'
 
 interface ISignInForm {
   login: string
@@ -13,14 +14,21 @@ const RhfControllerAndMui = () => {
   })
   const {errors} = useFormState({control})
   const onSubmit: SubmitHandler<ISignInForm> = data => console.log(data)
+  const minLength = 2
+  const maxLength = 8
 
   return (
-    <div className="auth-form">
-      <form className="auth-form__form" onSubmit={handleSubmit(onSubmit)}>
+    <>
+      <Typography variant='h5' textAlign='center'>React Hook Form from MUI</Typography>
+        <form onSubmit={handleSubmit(onSubmit)}>
         <Controller
           control={control}
           name="login"
-          rules={{required: 'Заполните поле'}}
+          rules={{
+            required: 'Заполните поле',
+            minLength: {value: minLength, message: `Не менее ${minLength} символов`},
+            maxLength: {value: maxLength, message: `Не не более ${maxLength} символов`},
+        }}
           render={({field}) => (
             <TextField
               label="Логин"
@@ -30,7 +38,7 @@ const RhfControllerAndMui = () => {
               size={'small'}
               margin="normal"
               error={!!errors.login?.message}
-              helperText={errors?.login?.message}
+              helperText={errors.login?.message}
             />
           )}
         />
@@ -54,7 +62,7 @@ const RhfControllerAndMui = () => {
         />
         <Button type="submit" variant="contained" fullWidth={true}>Войти</Button>
       </form>
-    </div>
+    </>
   )
 }
 

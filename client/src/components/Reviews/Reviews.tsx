@@ -1,26 +1,15 @@
-import {useQuery} from '@apollo/client'
-import {GET_REVIEW} from '../../apollo/query'
+import ReviewsList from './ReviewsList/ReviewsList'
+import ReviewsForm from './ReviewsForm/ReviewsForm'
+import Grid from '@mui/material/Unstable_Grid2'
 
 const Reviews = () => {
-  const {loading, error, data} = useQuery(GET_REVIEW)
-
-  if (loading) {
-    return <h3>Loading...</h3>
-  }
-
-  if (error) {
-    return <h3>Error...</h3>
-  }
-
   return (
-    <>
-      {data.getReview.map((review: any) =>
-        <div key={review.id}>
-          <p>{review.nameReview}</p>
-          <p>{review.descReview}</p>
-        </div>
-      )}
-    </>
+    <Grid container spacing={2}>
+      <Grid xs={4} xlOffset={4}>
+        <ReviewsForm/>
+        <ReviewsList/>
+      </Grid>
+    </Grid>
   )
 }
 
