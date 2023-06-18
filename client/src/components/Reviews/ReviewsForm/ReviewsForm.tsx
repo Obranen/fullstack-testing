@@ -38,7 +38,7 @@ const ReviewsForm = () => {
   }
 
   if (error) {
-    return <h3>Error... Not create new post</h3>
+    return <h3>Error... Not create new Review</h3>
   }
 
   return (

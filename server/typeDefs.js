@@ -15,5 +15,7 @@ export const typeDefs = gql `
   #Mutation
   type Mutation {
     addReview(nameReview: String, descReview: String): Review
+    removeReview(id: ID): ID
+    editReview(id: ID, nameReview: String, descReview: String): Review
   }
 `
