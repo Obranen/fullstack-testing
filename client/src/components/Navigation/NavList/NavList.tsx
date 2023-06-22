@@ -3,13 +3,12 @@ import {Link} from 'react-router-dom'
 import ListItemButton from '@mui/material/ListItemButton'
 import ListItemIcon from '@mui/material/ListItemIcon'
 import ListItemText from '@mui/material/ListItemText'
-import {FormatColorFill, Home, Reviews} from '@mui/icons-material'
+import {Home, Reviews} from '@mui/icons-material'
 import List from '@mui/material/List'
 
 const NavList = () => {
   const pages = [
     {to: '/', text: 'Home', icon: <Home/>},
-    {to: '/mui', text: 'Material UI', icon: <FormatColorFill/>},
     {to: '/reviews', text: 'Reviews', icon: <Reviews/>},
   ]
 
