@@ -2,7 +2,6 @@ import {create} from 'zustand'
 import {devtools} from 'zustand/middleware'
 import {nanoid} from 'nanoid'
 
-
 export interface ICars {
   id: string
   model: string

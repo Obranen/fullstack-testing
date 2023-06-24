@@ -1,0 +1,21 @@
+.custom-select {
+  &__control {
+    background-color: yellow !important;
+    &__value-container {
+
+    }
+    &__indicators {
+
+    }
+  }
+
+  &__menu {
+    background-color: green !important;
+    color: white;
+    &__menu-list {
+      &__option {
+
+      }
+    }
+  }
+}
