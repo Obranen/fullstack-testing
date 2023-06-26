@@ -6,6 +6,7 @@ import TextField from '@mui/material/TextField'
 import {IReviews} from '../../../../../interface/interface'
 import {GET_REVIEW, UPDATE_REVIEW} from '../../../../../apollo/query'
 import {useMutation} from '@apollo/client'
+import {motion} from 'framer-motion'
 
 interface IUpdateReview {
   setIsEditing: (isEdit: boolean) => void
@@ -42,7 +43,14 @@ const UpdateReview: FC<IUpdateReview> = ({setIsEditing, reviewId}) => {
 
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} style={{marginBottom: '20px'}}>
+    <motion.form
+      onSubmit={handleSubmit(onSubmit)}
+      style={{marginBottom: '20px'}}
+      initial={{opacity: 0}}
+      animate={{opacity: 1}}
+      exit={{opacity: 0}}
+      transition={{duration: 0.3}}
+    >
       <Controller
         control={control}
         name="nameReview"
@@ -86,7 +94,7 @@ const UpdateReview: FC<IUpdateReview> = ({setIsEditing, reviewId}) => {
         <Button variant="contained" onClick={() => setIsEditing(true)}>Cancel</Button>
         <Button type="submit" variant="contained">Save</Button>
       </ButtonGroup>
-    </form>
+    </motion.form>
   )
 }
 

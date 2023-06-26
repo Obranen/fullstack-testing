@@ -1,11 +1,12 @@
 import {ICars, useCarsStore} from '../../../store/cars'
 import {SubmitHandler, useForm} from 'react-hook-form'
+import {motion, AnimatePresence} from 'framer-motion'
+import Item from './Item/Item'
 
 const Cars = () => {
   const cars = useCarsStore(state => state.cars)
   const count = useCarsStore(state => state.cars.length)
   const addCar = useCarsStore(state => state.addCar)
-  const deleteCar = useCarsStore(state => state.deleteCar)
 
   const {
     register,
@@ -35,16 +36,21 @@ const Cars = () => {
       </form>
 
       <h2>List cars</h2>
-      {cars.length && cars.map(car =>
-        <ul key={car.id}>
-          <li>{car.model}</li>
-          <li>{car.age}</li>
-          <p
-            onClick={() => deleteCar(car.id)}
-            style={{color: 'red', cursor: 'pointer', border: '1px solid #000', width: '14px'}}
-          >X</p>
-        </ul>
-      )}
+      <AnimatePresence>
+        {cars.length && cars.map(car =>
+          <motion.ul
+            key={car.id}
+            initial={{opacity: 0}}
+            animate={{opacity: 1}}
+            exit={{opacity: 0}}
+            transition={{duration: 1}}
+          >
+            <Item
+              car={car}
+            />
+          </motion.ul>
+        )}
+      </AnimatePresence>
       <h3>Total: {count}</h3>
     </>
   )
