@@ -6,7 +6,6 @@ function App() {
     <>
       <CssBaseline />
       <Navigation/>
-      <h2>test</h2>
     </>
   )
 }
