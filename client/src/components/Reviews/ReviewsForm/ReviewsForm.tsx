@@ -43,7 +43,7 @@ const ReviewsForm = () => {
 
   return (
     <>
-      <Typography variant="h5" textAlign="center">Add Reviews</Typography>
+      <Typography variant="h5" textAlign="center">Add Review</Typography>
       <form onSubmit={handleSubmit(onSubmit)} style={{marginBottom: '20px'}}>
         <Controller
           control={control}
